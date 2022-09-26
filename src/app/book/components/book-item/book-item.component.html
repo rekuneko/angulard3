@@ -1,0 +1,12 @@
+<b>Books</b>
+<div *ngFor="let book of books">
+  <div>
+    <div>
+     Book #{{book.id}}: {{book|json}}
+    </div>
+    <div>
+      <button class="border border-gray-900 text-white hover:bg-orange-400 rounded-md bg-orange-500 px-3" (click)="edit(book.id)">Edit</button>
+      <button class="border border-gray-900 text-white hover:bg-red-400 rounded-md bg-red-500 px-1" (click)="delete(book.id)">Delete</button>
+    </div>
+  </div>
+</div>
