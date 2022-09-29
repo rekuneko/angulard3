@@ -1,0 +1,18 @@
+<h2>Blogs</h2>
+<div>
+  <div *ngFor="let blog of blogs">
+    <div>
+     Blog #{{blog.id}}: {{blog|json}}
+    </div>
+    <div>
+    <button (click)="edit(blog.id)">Edit</button>
+    <button (click)="delete(blog.id)">Delete</button>
+    </div>
+    <br>
+  </div>
+  <div>
+    <button (click)="add('add')">ADD</button>
+    <button (click)="deleteAll('del')">DELETE ALL</button>
+  </div>
+</div>
+

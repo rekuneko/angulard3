@@ -1,0 +1,18 @@
+<h2>Books</h2>
+<br>
+<div>
+  <div *ngFor="let book of books">
+    <div>
+     Book #{{book.id}}: {{book|json}}
+    </div>
+    <div>
+    <button (click)="edit(book.id)">Edit</button>
+    <button (click)="delete(book.id)">Delete</button>
+    </div>
+    <br>
+  </div>
+  <div>
+    <button (click)="add('add')">ADD</button>
+    <button (click)="deleteAll('del')">DELETE ALL</button>
+  </div>
+</div>
