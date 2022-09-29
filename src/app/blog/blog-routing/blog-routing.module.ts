@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'blog', 
   component: BlogItemComponent,
   loadChildren: () => import('./../blog.module').then(m => m.BlogModule)
- }
+ },
+ { path: '', redirectTo: '/blog', pathMatch: 'full'}
 ];
 
 @NgModule({

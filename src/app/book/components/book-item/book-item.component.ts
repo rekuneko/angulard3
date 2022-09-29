@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommandBarComponent } from 'src/app/shared/command-bar/command-bar.component';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
 
@@ -10,6 +11,7 @@ import { BookService } from '../../services/book.service';
 export class BookItemComponent implements OnInit {
 
   @Input() books:Book[] = []
+  @Input() command:CommandBarComponent = new CommandBarComponent;
 
   constructor(private bookService:BookService) { 
     this.books = bookService.getBooks()
@@ -24,6 +26,16 @@ export class BookItemComponent implements OnInit {
 
   edit(id:number){
     alert("Edited id:" + id);
+  }
+
+  add(action:string){
+    // alert("Add button works!")
+    this.command.addClickButton(action)
+  }
+
+  deleteAll(action:string){
+    // alert("Delete button works!")
+    this.command.delClickButton(action)
   }
 
 

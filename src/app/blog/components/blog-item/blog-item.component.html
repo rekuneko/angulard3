@@ -1,12 +1,18 @@
-<b>Blogs</b>
-<div *ngFor="let blog of blogs">
-  <div>
+<h2>Blogs</h2>
+<div>
+  <div *ngFor="let blog of blogs">
     <div>
      Blog #{{blog.id}}: {{blog|json}}
     </div>
     <div>
-      <button class="border border-gray-900 text-white hover:bg-orange-400 rounded-md bg-orange-500 px-3" (click)="edit(blog.id)">Edit</button>
-      <button class="border border-gray-900 text-white hover:bg-red-400 rounded-md bg-red-500 px-1" (click)="delete(blog.id)">Delete</button>
+    <button (click)="edit(blog.id)">Edit</button>
+    <button (click)="delete(blog.id)">Delete</button>
     </div>
+    <br>
+  </div>
+  <div>
+    <button (click)="add('add')">ADD</button>
+    <button (click)="deleteAll('del')">DELETE ALL</button>
   </div>
 </div>
+

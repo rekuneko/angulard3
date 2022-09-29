@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CommandBarComponent } from './shared/command-bar/command-bar.component';
-import { BookService } from './book/services/book.service';
-import { BlogService } from './blog/services/blog.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,9 +15,10 @@ import { BlogService } from './blog/services/blog.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers: [BookService,BlogService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

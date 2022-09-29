@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogListComponent } from './pages/blog-list/blog-list.component';
 import { BlogItemComponent } from './components/blog-item/blog-item.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -11,6 +12,7 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
     BlogItemComponent
   ],
   imports: [
+    MatButtonModule,
     CommonModule
   ]
 })
