@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+      <div class="col col-md-8" style="overflow-y: scroll; max-height: 100vh">
+        <form [formGroup]="bookForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name"/>
+          </div>
+          <div class="mb-3" formArrayName="authors">
+            <ng-container *ngFor="let authors of authors.controls; let i = index">
+              <div class="row" [formGroupName]="i">
+                <div class="col col-md-5">
+                  <div class="mb-3">
+                    <label [for]="'author' + i" class="form-label">Authors</label>
+                    <input type="text" class="form-control" [id]="'author' + i" formControlName="authors"/>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input type="text" class="form-control" id="isbn" formControlName="isbn"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
