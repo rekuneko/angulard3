@@ -4,6 +4,9 @@ import { BookListComponent } from './pages/book-list/book-list.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { BookFormComponent } from './pages/book-form/book-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookRoutingModule } from './book-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,7 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookFormComponent
   ],
   imports: [
-    CommonModule,ReactiveFormsModule
+    CommonModule,
+    BookRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatIconModule
   ]
 })
 export class BookModule { }

@@ -9,13 +9,14 @@ import { BlogService } from '../../services/blog.service';
 })
 export class BlogListComponent implements OnInit {
 
-  @Input() blogs:Blog[] = []
+  blogs?:Blog[] = []
 
   constructor(private blogService:BlogService) {
-    this.blogs = blogService.getBlogs()
+    
    }
 
   ngOnInit(): void {
+    this.blogs = this.blogService.getBlogs()
   }
 
 }

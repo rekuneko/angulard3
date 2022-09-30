@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-book-form',
@@ -26,8 +26,27 @@ export class BookFormComponent implements OnInit {
     return this.bookForm.get('authors') as FormArray
   }
 
-  addAuthors(){
-    this.authors.push(this.fb.group({authors:['']}))
+  newAuthor(): FormGroup{
+    return this.fb.group({author: ''})
+  }
+
+  addAuthor(){
+    this.authors.push(this.newAuthor());
+  }
+
+  removeAuthor(i:number){
+    this.authors.removeAt(i);
+  }
+  
+  submitBook() {
+    console.log(this.bookForm.value)
+  }
+
+  editBook(id: any){
+  }
+
+  deleteBook(id: any){
+
   }
 
 }

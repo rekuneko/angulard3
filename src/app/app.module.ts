@@ -3,20 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { CommandBarComponent } from './shared/command-bar/command-bar.component';
+import { BlogModule } from './blog/blog.module';
+import { BookModule } from './book/book.module';
+import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    CommandBarComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BookModule,
+    BlogModule,
+    UserModule,
+    BrowserAnimationsModule,
+    SharedModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

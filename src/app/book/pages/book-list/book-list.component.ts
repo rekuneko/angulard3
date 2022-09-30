@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
 
@@ -9,13 +9,13 @@ import { BookService } from '../../services/book.service';
 })
 export class BookListComponent implements OnInit {
 
-  @Input() books:Book[] = []
+  bookList?:Book[] = []
 
   constructor(private bookService:BookService) { 
-    this.books = bookService.getBooks()
   }
 
   ngOnInit(): void {
+    this.bookList = this.bookService.getBooks()
   }
 
 

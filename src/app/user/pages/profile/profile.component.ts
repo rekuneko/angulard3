@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -7,14 +7,22 @@ import { User } from '../../models/user';
 })
 export class ProfileComponent implements OnInit {
 
-  profile:User = {
-    email: '',
-    name: '',
-    bio: '',
-    active: false
+  profile:FormGroup
+
+  constructor(fb:FormBuilder){ 
+    this.profile = fb.group({
+      email: '',
+      name: '',
+      bio: '',
+      active: false
+    })
   }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    console.log(this.profile.value)
   }
 
 }

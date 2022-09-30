@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-command-bar',
@@ -7,19 +8,23 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class CommandBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:ActivatedRoute, private router:Router) { }
 
   @Output() onClick = new EventEmitter<any>()
   @Output() delClick = new EventEmitter<any>()
 
-  addClickButton(action:string){
-    this.onClick.emit(action)
-    alert("Add button works!")
+  addClickButton(){
+    if (this.router.url.includes('book')) {
+      this.router.navigate(['book/form'])
+    } else if (this.router.url.includes('blog')) {
+      this.router.navigate(['blog/form'])
+    }
   }
 
-  delClickButton(action:string){
-    this.delClick.emit(action)
-    alert("Delete button works!")
+  delClickButton(){
+    this.delClick.emit(this.route.snapshot.params)
+    alert("Delete all items?")
+    console.log(this.route.snapshot.params)
   }
 
   ngOnInit(): void {

@@ -1,1 +1,6 @@
-<!-- <app-blog-list></app-blog-list> -->
+<br><br><br>
+<h1>Blog List</h1>
+<app-command-bar></app-command-bar>
+<div class="item" *ngFor="let blogs of blogs">
+    <app-blog-item [blogs]="blogs"></app-blog-item>
+</div>

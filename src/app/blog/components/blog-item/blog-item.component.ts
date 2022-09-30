@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommandBarComponent } from 'src/app/shared/command-bar/command-bar.component';
 import { Blog } from '../../models/blog';
 import { BlogService } from '../../services/blog.service';
@@ -10,31 +11,19 @@ import { BlogService } from '../../services/blog.service';
 })
 export class BlogItemComponent implements OnInit {
 
-  @Input() blogs:Blog[] = []
-  @Input() command:CommandBarComponent = new CommandBarComponent;
+  @Input() blogs:Blog|undefined
 
-  constructor(private blogService:BlogService) {
-    this.blogs = blogService.getBlogs()
-   }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  delete(id:number){
-    alert("Deleted id:" + id);
+  delete(){
+    alert("Deleted id:" + this.blogs?.id);
   }
 
-  edit(id:number){
-    alert("Edited id:" + id);
-  }
-
-  add(action:string){
-    // alert("Add button works!")
-    this.command.addClickButton(action)
-  }
-
-  deleteAll(action:string){
-    // alert("Delete button works!")
-    this.command.delClickButton(action)
+  edit(){
+    // alert("Edited id:" + id);
+    this.router.navigate(['blog/form'])
   }
 }

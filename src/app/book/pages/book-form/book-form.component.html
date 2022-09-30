@@ -1,29 +1,38 @@
-<div class="container">
-    <div class="row">
-      <div class="col col-md-8" style="overflow-y: scroll; max-height: 100vh">
-        <form [formGroup]="bookForm">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" formControlName="name"/>
-          </div>
-          <div class="mb-3" formArrayName="authors">
-            <ng-container *ngFor="let authors of authors.controls; let i = index">
-              <div class="row" [formGroupName]="i">
-                <div class="col col-md-5">
-                  <div class="mb-3">
-                    <label [for]="'author' + i" class="form-label">Authors</label>
-                    <input type="text" class="form-control" [id]="'author' + i" formControlName="authors"/>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <div class="mb-3">
-            <label for="isbn" class="form-label">ISBN</label>
-            <input type="text" class="form-control" id="isbn" formControlName="isbn"/>
-          </div>
-        </form>
-      </div>
+<br><br><br>
+<h1>Book Form</h1>
+<form class="center" [formGroup]="bookForm" (ngSubmit)="submitBook()" 
+    (BookIDEditEmitter)="editBook($event)" 
+    (BookIDDeleteEmitter)="deleteBook($event)">
+
+    <div [hidden]="bookForm.valid" class="form-group">
+        Please fill in required fields *
     </div>
-  </div>
+
+    <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" formControlName="name" placeholder="Name" class="form-control" required>
+    </div>
+
+    <div class="form-group" formArrayName="authors">
+        <label for="authors">Author/s *</label>
+        <div *ngFor="let author of authors.controls; let i=index">
+            <div class="index" [formGroupName]="i">
+                <input type="text" formControlName="author" placeholder="Author #{{i+1}}" class="form-control" required>
+                <button type="submit" class="btn" (click)="removeAuthor(i)"><mat-icon>delete_forever</mat-icon></button>
+            </div>
+        </div>
+        <div class="form-btn">
+            <button type="submit" class="btn" (click)="addAuthor()">Add Author</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="isbn">ISBN *</label>
+        <input type="text" formControlName="isbn" placeholder="Must be exactly 9 digits" class="form-control" required minlength="9" maxlength="9">
+    </div>
+
+    <div  class="form-btn">
+        <button class="btn" type="submit" [disabled]="bookForm.invalid" class="btn">Submit</button>
+    </div>
+
+</form>
